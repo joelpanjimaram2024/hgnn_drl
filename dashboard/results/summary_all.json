@@ -1,0 +1,478 @@
+{
+  "runs": [
+    {
+      "config": {
+        "name": "HGNN-DRL",
+        "version": "0.1.0",
+        "seed": 42,
+        "device": "cpu",
+        "hypergraph": "HypergraphConfig(vertex_dim=8, hyperedge_dim=4, hidden_dim=32, use_hyperedge_weights=True, degree_normalization='symmetric', shared_buffer_weight_factor=1.0, cache_size=10000)",
+        "hgnn": "HGNNConfig(in_dim=8, hidden_dim=64, out_dim=64, num_layers=3, activation='relu', use_attention=False, dropout=0.0, batch_first=True, vertex_dim=8)",
+        "action": "DiscreteActionConfig(n_actions=3, action_names=['Mist', 'Fog', 'Cloud'])",
+        "ppo": "PPOConfig(algo='PPO', policy='MlpPolicy', learning_rate=0.0003, n_steps=2048, batch_size=64, n_epochs=10, gamma=0.99, gae_lambda=0.95, clip_range=0.2, ent_coef=0.01, vf_coef=0.5, max_grad_norm=0.5, seed=42, device='auto', n_envs=1, total_timesteps=50000, log_interval=10, render_mode=None, verbose=1, tensorboard_log=None)",
+        "replay": "ReplayBufferConfig(capacity=100000, state_dim=64, action_dim=3, hidden_dim=64)",
+        "resources": "ResourceConfig(cpu_mist=1.0, memory_mist=1.0, cpu_fog=4.0, memory_fog=8.0, cpu_cloud=16.0, memory_cloud=32.0, bandwidth=100.0, propagation_delay_ms=1.0)",
+        "tasks": "TaskConfig(default_cpu_cycles=1000000000.0, default_data_size_bytes=1000000.0, default_memory_requirement=0.5, default_deadline=1.0, default_priority=0.5, arrival_rate=1.0, max_shared_buffers=4, task_types=('compute', 'offload', 'fusion'), battery_sensitive=False, preemption_allowed=False)",
+        "reward": "RewardConfig(alpha=1.0, beta=0.5, gamma=5.0, delta=0.3, eta=1.0, deadline_penalty_multiplier=10.0, normalize=True)",
+        "burst": "BurstConfig(burst_probability=0.0, burst_scale=5.0, burst_cooldown=5)",
+        "scenario": "ScenarioConfig(num_mist_nodes=6, num_fog_nodes=2, num_cloud_nodes=1, num_cameras=6, camera_frame_size_bytes=8000000.0, frame_arrival_rate_hz=2.0, nominal_deadline_ms=50.0, drone_battery_capacity_wh=100.0, drone_battery_initial_wh=100.0, num_drones=8, num_health_stream_nodes=4, num_patients=3, healthcare_emergency_penalty=10.0, vehicle_mode='computational')",
+        "training": "TrainingConfig(scenario='factory', agent='HGNN+PPO', horizon='long', train_episodes=50, eval_episodes=10, seed=42, device='cpu', record_video=False, checkpoint_freq=5, checkpoint_dir='checkpoints', summary_dir='results')",
+        "experiments": "ExperimentConfig(seeds=[42], num_reps=5, workload_size=50, train_episodes=20, eval_episodes=5, reward_debug=False, save_checkpoints=False, save_plots=False, save_results=True, summary_dir='results', checkpoint_dir='checkpoints', log_file=None)",
+        "workload_size": 50,
+        "horizon": 300.0,
+        "reward_debug": false,
+        "save_checkpoints": true,
+        "save_plots": true,
+        "save_results": true,
+        "summary_dir": "results",
+        "checkpoint_dir": "checkpoints",
+        "log_file": "None",
+        "_rng": "Generator(PCG64)"
+      },
+      "algorithm": "greedy",
+      "scenario": "factory",
+      "seed": 42,
+      "n_tasks": 50,
+      "metrics": {
+        "scenario_id": "factory",
+        "n_tasks": 24,
+        "n_completed": 9,
+        "n_deadline_misses": 3,
+        "deadline_violation_rate": 33.33333333333333,
+        "total_energy": 43.85487613891817,
+        "total_transfer_bytes": 72000000,
+        "total_completed": 9,
+        "average_latency": 0.2993185495142943,
+        "median_latency": 0.12827145206692914,
+        "p95_latency": 0.6038026706106683,
+        "p99_latency": 0.6460721122590007,
+        "elapsed_time": 300.00999999987215,
+        "total_infeasible": 0,
+        "energy_per_task": 4.872764015435353,
+        "nodes": {
+          "Mist_0": {
+            "node_id": "Mist_0",
+            "layer": "Mist",
+            "cpu_capacity": 1.0,
+            "memory_capacity": 1.0,
+            "cpu_utilization": 0.0,
+            "memory_utilization": 0.0,
+            "queue_length": 0,
+            "available_bandwidth": 100.0,
+            "network_latency_ms": 1.0,
+            "is_battery_powered": false,
+            "battery_capacity_wh": 100.0,
+            "battery_remaining_wh": 100.0,
+            "battery_charging": false,
+            "max_queue_length": 1000,
+            "active_count": 0
+          },
+          "Fog_0": {
+            "node_id": "Fog_0",
+            "layer": "Fog",
+            "cpu_capacity": 4.0,
+            "memory_capacity": 8.0,
+            "cpu_utilization": 0.0,
+            "memory_utilization": 0.0,
+            "queue_length": 0,
+            "available_bandwidth": 100.0,
+            "network_latency_ms": 5.0,
+            "is_battery_powered": false,
+            "battery_capacity_wh": 100.0,
+            "battery_remaining_wh": 100.0,
+            "battery_charging": false,
+            "max_queue_length": 1000,
+            "active_count": 0
+          },
+          "Cloud_0": {
+            "node_id": "Cloud_0",
+            "layer": "Cloud",
+            "cpu_capacity": 16.0,
+            "memory_capacity": 32.0,
+            "cpu_utilization": 0.0,
+            "memory_utilization": 0.0,
+            "queue_length": 0,
+            "available_bandwidth": 100.0,
+            "network_latency_ms": 30.0,
+            "is_battery_powered": false,
+            "battery_capacity_wh": 100.0,
+            "battery_remaining_wh": 100.0,
+            "battery_charging": false,
+            "max_queue_length": 1000,
+            "active_count": 0
+          }
+        },
+        "jobs": 9,
+        "sim_raw": "queue_wait=factory_camera0_Thermal Analysis=0.0000s,factory_camera1_Bolt Alignment=0.0000s,factory_camera1_Thermal Analysis=0.0000s,factory_camera2_Bolt Alignment=0.0000s,factory_camera2_Thermal Analysis=0.0000s,factory_camera3_Crack Detection=0.0000s,factory_camera4_Bolt Alignment=0.0000s,factory_camera5_Weld Quality=0.0000s,factory_camera5_Thermal Analysis=0.0000s"
+      },
+      "per_task": [
+        {
+          "task_id": "factory_camera0_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.0,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera0_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.01,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera0_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.02,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera0_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.03,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera1_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.54,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera1_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.55,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera1_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.56,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera1_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 0.5700000000000001,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera2_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.08,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera2_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.09,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera2_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.1,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera2_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.11,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera3_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.62,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera3_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.63,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera3_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.6400000000000001,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera3_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 1.65,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera4_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.16,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera4_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.17,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera4_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.18,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera4_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.19,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera5_Crack Detection",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.7,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera5_Bolt Alignment",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.71,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera5_Weld Quality",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.72,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        },
+        {
+          "task_id": "factory_camera5_Thermal Analysis",
+          "scenario_id": "factory",
+          "layer": null,
+          "arrival_time": 2.73,
+          "latency": 0.0,
+          "energy_consumed": 0.0,
+          "deadline_missed": false,
+          "done": false,
+          "infeasible_at_arrival": false
+        }
+      ],
+      "wall_time": 0.6542275470001186
+    }
+  ],
+  "summary": {
+    "means": {
+      "deadline_violation_rate_pct": 33.33333333333333,
+      "average_latency_s": 0.2993185495142943,
+      "median_latency_s": 0.12827145206692914,
+      "p95_latency_s": 0.6038026706106683,
+      "p99_latency_s": 0.6460721122590007,
+      "total_energy_J": 43.85487613891817,
+      "energy_per_task_J": 4.872764015435353,
+      "throughput_tasks_per_s": 0.029999000033345005
+    },
+    "stds": {
+      "deadline_violation_rate_pct": 0.0,
+      "average_latency_s": 0.0,
+      "median_latency_s": 0.0,
+      "p95_latency_s": 0.0,
+      "p99_latency_s": 0.0,
+      "total_energy_J": 0.0,
+      "energy_per_task_J": 0.0,
+      "throughput_tasks_per_s": 0.0
+    },
+    "cis": {
+      "deadline_violation_rate_pct": 0.0,
+      "average_latency_s": 0.0,
+      "median_latency_s": 0.0,
+      "p95_latency_s": 0.0,
+      "p99_latency_s": 0.0,
+      "total_energy_J": 0.0,
+      "energy_per_task_J": 0.0,
+      "throughput_tasks_per_s": 0.0
+    },
+    "pct_change": {
+      "deadline_violation_rate_pct": 0.0,
+      "average_latency_s": 0.0,
+      "median_latency_s": 0.0,
+      "p95_latency_s": 0.0,
+      "p99_latency_s": 0.0,
+      "total_energy_J": 0.0,
+      "energy_per_task_J": 0.0,
+      "throughput_tasks_per_s": 0.0
+    },
+    "counts": {
+      "('greedy', 'factory')": 1
+    }
+  },
+  "df": {
+    "algorithm": {
+      "0": "greedy"
+    },
+    "scenario": {
+      "0": "factory"
+    },
+    "seed": {
+      "0": 42
+    },
+    "n_tasks": {
+      "0": 50
+    },
+    "n_completed": {
+      "0": 9
+    },
+    "n_deadline_misses": {
+      "0": 3
+    },
+    "deadline_violation_rate_pct": {
+      "0": 33.33333333333333
+    },
+    "average_latency_s": {
+      "0": 0.2993185495142943
+    },
+    "median_latency_s": {
+      "0": 0.12827145206692914
+    },
+    "p95_latency_s": {
+      "0": 0.6038026706106683
+    },
+    "p99_latency_s": {
+      "0": 0.6460721122590007
+    },
+    "total_energy_J": {
+      "0": 43.85487613891817
+    },
+    "energy_per_task_J": {
+      "0": 4.872764015435353
+    },
+    "communication_bytes": {
+      "0": 72000000
+    },
+    "communication_transfers": {
+      "0": 72000000
+    },
+    "throughput_tasks_per_s": {
+      "0": 0.029999000033345005
+    },
+    "wall_time_s": {
+      "0": 0.6542275470001186
+    },
+    "n_infeasible": {
+      "0": 0
+    }
+  }
+}

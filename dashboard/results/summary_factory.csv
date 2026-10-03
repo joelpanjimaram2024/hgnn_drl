@@ -1,0 +1,9 @@
+metric,mean,std,ci95
+deadline_violation_rate_pct,33.33333333333333,0.0,0.0
+average_latency_s,0.2993185495142943,0.0,0.0
+median_latency_s,0.12827145206692914,0.0,0.0
+p95_latency_s,0.6038026706106683,0.0,0.0
+p99_latency_s,0.6460721122590007,0.0,0.0
+total_energy_J,43.85487613891817,0.0,0.0
+energy_per_task_J,4.872764015435353,0.0,0.0
+throughput_tasks_per_s,0.029999000033345005,0.0,0.0

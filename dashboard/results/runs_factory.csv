@@ -1,0 +1,2 @@
+algorithm,scenario,seed,n_tasks,n_completed,n_deadline_misses,deadline_violation_rate_pct,average_latency_s,median_latency_s,p95_latency_s,p99_latency_s,total_energy_J,energy_per_task_J,communication_bytes,communication_transfers,throughput_tasks_per_s,wall_time_s,n_infeasible
+greedy,factory,42,50,9,3,33.33333333333333,0.2993185495142943,0.12827145206692914,0.6038026706106683,0.6460721122590007,43.85487613891817,4.872764015435353,72000000,72000000,0.029999000033345005,0.6542275470001186,0

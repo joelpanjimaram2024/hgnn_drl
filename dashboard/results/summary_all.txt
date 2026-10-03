@@ -1,0 +1,10 @@
+Experiment summary
+============================================================
+deadline_violation_rate_pct         mean=     33.3333 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+average_latency_s                   mean=      0.2993 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+median_latency_s                    mean=      0.1283 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+p95_latency_s                       mean=      0.6038 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+p99_latency_s                       mean=      0.6461 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+total_energy_J                      mean=     43.8549 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+energy_per_task_J                   mean=      4.8728 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%
+throughput_tasks_per_s              mean=      0.0300 std=    0.0000 ci95=    0.0000 pct_vs_cloud=    0.00%

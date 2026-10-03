@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hgnn-drl"
+version = "0.1.0"
+description = "Hypergraph Neural Network + Deep Reinforcement Learning for Mist-Fog-Cloud task scheduling"
+requires-python = ">=3.11"
+dependencies = [
+    "torch==2.14.1",
+    "gymnasium>=0.29,<2.0",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "networkx>=3.3",
+    "PyYAML>=6.0",
+    "scipy>=1.14",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "stable-baselines3>=2.3",
+]
+dashboard = [
+    "streamlit>=1.30",
+]
+research = [
+    "stable-baselines3>=2.3",
+    "streamlit>=1.30",
+]
+
+[project.scripts]
+hgnn-drl-smoke = "scripts.smoke_test:main"
+
+[tool.setuptools]
+packages = ["src.utils", "src.models", "src.hypergraph", "src.environment",
+            "src.agents", "src.baselines", "src.scenarios", "src.experiments",
+            "src.metrics", "src.dashboard", "src.schedulers", "src.scripts"]
